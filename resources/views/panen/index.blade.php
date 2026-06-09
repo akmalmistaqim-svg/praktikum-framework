@@ -8,6 +8,43 @@
 <body style="font-family: Arial, sans-serif; padding: 20px;">
     <h2>Daftar Hasil Panen Pertanian</h2>
     <hr>
+
+    {{-- Form Input --}}
+    <form action="/data-panen" method="POST">
+        @csrf
+        <table>
+            <tr>
+                <td>Nama Komoditas</td>
+                <td>
+                    <input type="text" name="nama_komoditas">
+                    @error('nama_komoditas')
+                        <span style="color:red">{{ $message }}</span>
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td>Jumlah (Kg)</td>
+                <td>
+                    <input type="number" name="jumlah_kg">
+                    @error('jumlah_kg')
+                        <span style="color:red">{{ $message }}</span>
+                    @enderror
+                </td>
+            </tr>
+            <tr>
+                <td>Tanggal Panen</td>
+                <td><input type="date" name="tanggal_panen"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Simpan</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <hr>
+
+    {{-- Tabel Data --}}
     <table border="1" cellpadding="10" cellspacing="0" width="100%">
         <thead style="background-color: #f2f2f2;">
             <tr>
